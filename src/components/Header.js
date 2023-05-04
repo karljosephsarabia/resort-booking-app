@@ -17,9 +17,9 @@ export default function Header() {
         window.matchMedia("(min-width: 572px)").addEventListener('change', e => dispatch(setResponsive(e.matches)));
     }, [dispatch]);
     return (
-        <>
+        <div style={{backgroundColor: "transparent"}}>
             {!responsive && <HeaderMobileView />}
             {responsive && <HeaderDesktopView />}
-        </>
+        </div>
     );
 }
