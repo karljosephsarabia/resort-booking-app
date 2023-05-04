@@ -1,15 +1,14 @@
-import { HeroBanner } from "./Main/Hero Banner/HeroBanner";
-import MainContent from "./Main/MainContent/MainContent";
-
-
+import { Routes, Route } from "react-router-dom";
 
 export default function Main() {
     
 
     return (
         <>
-        <HeroBanner />
-        <MainContent />
+            <Routes>
+                <Route path='/' element={<LandingPage />} />
+                <Route path='/resortList' element={<ResortList />} />
+            </Routes>
         </>
     )
 }
