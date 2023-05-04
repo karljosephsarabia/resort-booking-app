@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { combineReducers } from "redux";
-import responsiveSlice from "./ResponsiveSlice";
+import { combineReducers } from "@reduxjs/toolkit";
+import responsiveSlice, { resortListSlice } from "./ResponsiveSlice";
 
 const rootReducer = combineReducers({
-    responsive: responsiveSlice.reducer
+    responsive: responsiveSlice.reducer,
+    resortList: resortListSlice.reducer
     //add reducers
 });
 

@@ -10,6 +10,18 @@ const responsiveSlice = createSlice({
     }
 });
 
+export const resortListSlice = createSlice({
+    name: 'resortList',
+    initialState: [],
+    reducers: {
+        setResortList: (state, action) => {
+            // console.log(action.payload);
+            return action.payload;
+        }
+    }
+});
+
 export const { setResponsive } = responsiveSlice.actions;
+export const { setResortList } = resortListSlice.actions;
 
 export default responsiveSlice;
