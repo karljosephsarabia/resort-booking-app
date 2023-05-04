@@ -1,0 +1,42 @@
+@font-face {
+    font-family: "sansblack";
+    src: url("../../../../Resort\ Fonts/Fontspring-DEMO-resort-sansblack.otf");
+}
+
+@font-face {
+    font-family: "sansregular";
+    src: url("../../../../Resort\ Fonts/Fontspring-DEMO-resort-sansregular.otf");
+}
+
+@font-face {
+    font-family: "sansbold";
+    src: url("../../../../Resort\ Fonts/Fontspring-DEMO-resort-sansbold.otf");
+}
+
+.main-content-text-mobile {
+    font-family: sansblack;
+    font-size: 2.5rem;
+}
+
+.main-content-quote-mobile {
+    font-family: sansregular;
+}
+
+.main-content-text-desktop {
+    font-family: sansblack;
+    font-size: 3.5rem;
+}
+
+.main-content-quote-desktop {
+    font-family: sansregular;
+    font-size: 1.25rem;
+}
+
+.main-card-images {
+    object-fit: cover;
+    object-position: center;
+}
+
+.main-card-shadow-style {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
