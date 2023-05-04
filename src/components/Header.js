@@ -1,6 +1,6 @@
 import { useEffect } from "react";
-import HeaderDesktopView from "./Header/HeaderDesktopView";
-import HeaderMobileView from "./Header/HeaderMobileView";
+import HeaderDesktopView from "./HeaderComponent/HeaderDesktopView";
+import HeaderMobileView from "./HeaderComponent/HeaderMobileView";
 import { useDispatch, useSelector } from "react-redux";
 import { setResponsive } from "../store/ResponsiveSlice";
 
