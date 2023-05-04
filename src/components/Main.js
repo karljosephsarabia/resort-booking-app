@@ -8,8 +8,8 @@ export default function Main() {
     return (
         <>
             <Routes>
-                <Route path='/' element={<LandingPage />} />
-                <Route path='/resortList' element={<ResortList />} />
+                <Route path='/resort-booking-app' element={<LandingPage />} />
+                <Route path='/resort-booking-app/resortList' element={<ResortList />} />
             </Routes>
         </>
     );

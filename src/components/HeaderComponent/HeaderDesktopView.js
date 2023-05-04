@@ -25,8 +25,8 @@ export default function HeaderDesktopView() {
                             </Offcanvas.Header>
                             <Offcanvas.Body>
                                 <Nav className="justify-content-center align-items-center flex-grow-1 pe-3">
-                                    <Nav.Link href="/" className='text-uppercase fs-5'>Home</Nav.Link>
-                                    <Nav.Link href="/resortList" className='text-uppercase fs-5'>Destination</Nav.Link>
+                                    <Nav.Link href="/resort-booking-app" className='text-uppercase fs-5'>Home</Nav.Link>
+                                    <Nav.Link href="/resort-booking-app/resortList" className='text-uppercase fs-5'>Destination</Nav.Link>
                                     <Nav.Link href="#action2" className='text-uppercase fs-5'>About</Nav.Link>
                                     <Nav.Link href="#action2" className='text-uppercase fs-5'>Contact</Nav.Link>
                                 </Nav>
