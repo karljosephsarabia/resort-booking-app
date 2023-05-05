@@ -27,8 +27,8 @@ export default function HeaderDesktopView() {
                                 <Nav className="justify-content-center align-items-center flex-grow-1 pe-3">
                                     <Nav.Link href="/resort-booking-app" className='text-uppercase fs-5'>Home</Nav.Link>
                                     <Nav.Link href="/resort-booking-app/resortList" className='text-uppercase fs-5'>Destination</Nav.Link>
-                                    <Nav.Link href="#action2" className='text-uppercase fs-5'>About</Nav.Link>
-                                    <Nav.Link href="#action2" className='text-uppercase fs-5'>Contact</Nav.Link>
+                                    <Nav.Link href="/resort-booking-app/AboutUsPage" className='text-uppercase fs-5'>About</Nav.Link>
+                                    <Nav.Link href="/resort-booking-app/ContactPage" className='text-uppercase fs-5'>Contact</Nav.Link>
                                 </Nav>
                                 <Button variant='primary' size='lg' style={{ width: "8rem" }} className='align-items-center d-flex gap-2'><LoginIcon></LoginIcon>LOGIN</Button>
                             </Offcanvas.Body>

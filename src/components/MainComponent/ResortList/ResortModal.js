@@ -1,5 +1,5 @@
 import { Typography } from '@mui/material';
-import { Col, Row, Nav, Stack, Tab, Tabs, Carousel } from 'react-bootstrap';
+import { Col, Row, Stack, Tab, Tabs, Carousel } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';

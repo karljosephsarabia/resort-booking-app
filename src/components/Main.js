@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import LandingPage from "./MainComponent/LandingPage";
 import ResortList from "./MainComponent/ResortList";
+import Contact from "./MainComponent/ContactPage/Contact"
+import About from "./MainComponent/AboutUsPage/About"
 
 export default function Main() {
     
@@ -10,6 +12,8 @@ export default function Main() {
             <Routes>
                 <Route path='/resort-booking-app' element={<LandingPage />} />
                 <Route path='/resort-booking-app/resortList' element={<ResortList />} />
+                <Route path='/resort-booking-app/ContactPage' element={<Contact/>} />
+                <Route path='/resort-booking-app/AboutUsPage' element={<About/>} />
             </Routes>
         </>
     );
