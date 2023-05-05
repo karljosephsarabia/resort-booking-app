@@ -5,30 +5,20 @@ import './login-register.css';
 function Register(){
     return(
         <>
-        <div className="row container-fluid m-auto p-0 main">
-            
-            <div className="banner col-md-5 m-0 p-0"><div className="register-login-banner"></div></div>
-            <div className="register-container d-flex  align-items-center col-md-7 m-auto"> 
-                <div className=" align-self-center register m-auto">
+        <div className=" container-fluid m-auto p-0 main"> 
+                <div className=" align-self-center register m-auto register-container">
                     <h1 className="text-center login-registration-text">Registration</h1>
-                    {/* <div className="d-flex justify-content-around">
-                    <p>Register as:</p>
-                    
-                    <Radio id="register-customer"  label ="Customer" name="registerRadio" checked="checked"/>
-                    <Radio id="register-owner"  label ="Partner" name="registerRadio" />
-                    </div> */}
                     <div className="d-flex justify-content-evenly">
-                        {/* <p>Register as:</p> */}
                         <div class="form-check">
                             <input class="form-check-input" type="radio" name="registerRadio" id="register-owner"/>
-                            <label class="form-check-label" for="register-owner">
-                                Partner
+                            <label class="form-check-label " for="register-owner">
+                            <p className="radio-text">Partner</p>
                             </label>
                         </div>
                         <div class="form-check">
                         <input class="form-check-input" type="radio" name="registerRadio" id="flexRadioDefault2" checked/>
                         <label class="form-check-label" for="flexRadioDefault2">
-                            Customer
+                            <p className="radio-text">Customer</p>
                         </label>
                         </div>
                     </div>
@@ -45,10 +35,10 @@ function Register(){
                     
                     
                     <div className="d-flex justify-content-center"><PageButton Value="Register" class="mt-3 "/></div>
-                    <p className="mt-3 text-center">Already have an account?  <a className="link" href="/login">Login</a></p>
+                    <p className="mt-3 text-center radio-text">Already have an account?  <a className="link" href="/login">Login</a></p>
                 </div>
             </div>
-        </div>
+        
         </>
     );
 }
