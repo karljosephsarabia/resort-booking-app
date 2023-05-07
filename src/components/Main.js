@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import LandingPage from "./MainComponent/LandingPage";
 import ResortList from "./MainComponent/ResortList";
 
