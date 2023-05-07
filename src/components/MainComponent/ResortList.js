@@ -15,15 +15,15 @@ export default function ResortList() {
     return (
         <>
             <Container fluid>
-                <Row>
+                <Row className="d-flex justify-content-center">
                     {!responsive && <SearchComponentMobile />}
                     {responsive && <SearchComponentDesktop />}
                     {!responsive && <ResortComponentMobile />}
-                    {responsive && <ResortComponentDesktop />}  
+                    {responsive && <ResortComponentDesktop />}
                 </Row>
             </Container >
 
-           
+
         </>
     );
 }
