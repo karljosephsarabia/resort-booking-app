@@ -21,7 +21,35 @@ export const resortListSlice = createSlice({
     }
 });
 
+export const searchSlice = createSlice({
+    name: 'search',
+    initialState: '',
+    reducers: {
+        setSearch: (state, action) => {
+            // console.log(action.payload);
+            return action.payload;
+        }
+    }
+});
+
+export const bookSlice = createSlice({
+    name: 'book',
+    initialState: {
+        bookStatus: false,
+        selectedResort: []
+    },
+    reducers: {
+        setBook: (state, action) => {
+            console.log(action.payload);
+            return action.payload;
+        }
+    }
+});
+
+
 export const { setResponsive } = responsiveSlice.actions;
 export const { setResortList } = resortListSlice.actions;
+export const { setSearch } = searchSlice.actions;
+export const { setBook } = bookSlice.actions;
 
 export default responsiveSlice;
