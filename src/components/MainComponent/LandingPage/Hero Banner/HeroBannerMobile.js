@@ -7,7 +7,7 @@ export default function HeroBannerMobile() {
         <>
             <Row>
                 <Col className="d-flex flex-column align-items-center">
-                    <h1 className="hero-banner-name-mobile position-relative">Dora<span className="hero-banner-text-mobile">Explore and Travel</span></h1>
+                    <h1 className="hero-banner-name-mobile position-relative">Dora<span className="hero-banner-text-mobile">Travel and explore</span></h1>
                 </Col>
             </Row>
         </>
