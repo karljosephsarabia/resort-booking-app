@@ -5,8 +5,12 @@ import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import LoginIcon from '@mui/icons-material/Login';
 import './style.css';
+import { useNavigate } from 'react-router-dom';
 
 export default function HeaderDesktopView() {
+    const navigate = useNavigate();
+
+    const handleLogIn = () => navigate('/login');
     return (
         <>
             {['sm'].map((expand) => (
@@ -27,11 +31,11 @@ export default function HeaderDesktopView() {
                             <Offcanvas.Body>
                                 <Nav className="justify-content-center align-items-center flex-grow-1 pe-3 gap-5">
                                     <Nav.Link href="/resort-booking-app" className='text-uppercase fs-5'>Home</Nav.Link>
-                                    <Nav.Link href="/resort-booking-app/resortList" className='text-uppercase fs-5'>Destination</Nav.Link>
-                                    <Nav.Link href="/resort-booking-app/AboutUsPage" className='text-uppercase fs-5'>About</Nav.Link>
-                                    <Nav.Link href="/resort-booking-app/ContactPage" className='text-uppercase fs-5'>Contact</Nav.Link>
+                                    <Nav.Link href="/resortList" className='text-uppercase fs-5'>Destination</Nav.Link>
+                                    <Nav.Link href="/AboutUsPage" className='text-uppercase fs-5'>About</Nav.Link>
+                                    <Nav.Link href="/ContactPage" className='text-uppercase fs-5'>Contact</Nav.Link>
                                 </Nav>
-                                <Button variant='primary' size='lg' style={{ width: "8rem" }} className='align-items-center d-flex gap-2'><LoginIcon></LoginIcon>LOGIN</Button>
+                                <Button variant='primary' size='lg' style={{ width: "8rem" }} className='align-items-center d-flex gap-2' onClick={handleLogIn}><LoginIcon></LoginIcon>LOGIN</Button>
                             </Offcanvas.Body>
                         </Navbar.Offcanvas>
                     </Container>
