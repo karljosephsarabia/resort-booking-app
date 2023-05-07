@@ -1,71 +1,41 @@
 import { Col } from "react-bootstrap";
 import React from "react";
-
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import Select from '@mui/material/Select';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-
-import { Box, Button } from '@mui/material';
-import FormControl from '@mui/material/FormControl';
-
-import TextField from '@mui/material/TextField';
-import NearMeIcon from '@mui/icons-material/NearMe';
-import LocationOnIcon from '@mui/icons-material/LocationOn';
-import Calendar from '@mui/icons-material/Event';
-import { DateRangePicker } from '@mui/x-date-pickers-pro/DateRangePicker';
-import { SingleInputDateRangeField } from '@mui/x-date-pickers-pro/SingleInputDateRangeField';
+import { Stack } from 'react-bootstrap';
+import Paper from '@mui/material/Paper';
+import InputBase from '@mui/material/InputBase';
+import IconButton from '@mui/material/IconButton';
+import SearchIcon from '@mui/icons-material/Search';
+import { useDispatch } from "react-redux";
+import { setSearch } from '../../../store/ResponsiveSlice';
+import Booking from "./BookingComponent/Booking.js";
 
 
 export default function SearchComponentDesktop() {
-    const [destination, setDestination] = React.useState('');
-
-    const handleChange = (event) => {
-        setDestination(event.target.value);
-    };
+    const dispatch = useDispatch();
+    const handleOnChange = (e) => dispatch(setSearch(e.target.value));
 
     return (
         <>
-            <Col sm={12} className="my-5 d-flex justify-content-center">
-                <FormControl fullWidth sx={{ width: 1150, backgroundColor: "rgba(22%, 61%, 61%, 0.6)" }} className="d-flex flex-row align-items-end justify-content-between px-3 pb-3 rounded-3 gap-3">
-                    <Box>
-                        <InputLabel id="destination" sx={{ position: "relative" }}>Destination</InputLabel>
-                        <Select
-                            id="destination"
-                            label="Destination"
-                            value={destination}
-                            className="bg-white"
-                            onChange={handleChange}
-                            sx={{ width: "15vw" }}
-                        >
-
-                            <MenuItem value={"Palawan"}><LocationOnIcon></LocationOnIcon>Palawan</MenuItem>
-                            <MenuItem value={"Cebu"}><LocationOnIcon></LocationOnIcon>Cebu</MenuItem>
-                            <MenuItem value={"Negros Oriental"}><LocationOnIcon></LocationOnIcon>Negros Oriental</MenuItem>
-                        </Select>
-                    </Box>
-
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DemoContainer components={['SingleInputDateRangeField']} sx={{ backgroundColor: "white", paddingTop: 0, marginTop: "8px", borderRadius: "3px", width: "25vw" }}>
-                            <DateRangePicker
-                                slots={{ field: SingleInputDateRangeField }}
-                                slotProps={{ textField: { InputProps: { endAdornment: <Calendar /> } } }}
-                                label="Check In - Check Out"
-                            />
-                        </DemoContainer>
-                    </LocalizationProvider>
-
-                    <fieldset>
-                        <legend className="fs-6 mb-2 mt-2">Guest</legend>
-                        <div className="d-flex flex-row gap-3">
-                            <TextField id="outlined-number" label="Adult Qty" type="number" InputLabelProps={{ shrink: true }} className="bg-white rounded-2" sx={{ width: "8vw" }} defaultValue={1} />
-                            <TextField id="outlined-number" label="Child Qty" type="number" InputLabelProps={{ shrink: true }} className="bg-white rounded-2" sx={{ width: "8vw" }} defaultValue={1} />
-                        </div>
-                    </fieldset>
-                    <Button variant="contained" className="d-flex gap-2 mt-3 py-3" size="large" sx={{ width: "15vw" }}>Seach Now<NearMeIcon></NearMeIcon></Button>
-                </FormControl>
+            <Col sm={12} className="d-flex justify-content-center">
+                <Stack className="d-flex flex-column align-items-center">
+                    <h1 className="hero-banner-name-desktop position-relative mb-5">Dora<span className="hero-banner-text-desktop fs-6 w-100 position-absolute" style={{bottom: "-0.5rem"}}>Travel like dora, discover like an explorer</span></h1>
+                    <Booking />
+                    <Paper
+                        component="form"
+                        sx={{ p: '2px 20px', display: 'flex', alignItems: 'center', width: 700, borderRadius: "2rem", zIndex: "100", boxShadow: "inset -5px -5px 10px 0px rgba(255, 255, 255, 0.5), inset 5px 5px 10px 0px rgba(0, 0, 0, 0.3)", background: "rgb(100, 184, 177)" }}
+                        className="mt-5"
+                    >
+                        <InputBase
+                            sx={{ ml: 1, flex: 1 }}
+                            placeholder="Search Destination"
+                            inputProps={{ 'aria-label': 'search google maps' }}
+                            onChange={(e) => handleOnChange(e)}
+                        />
+                        <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
+                            <SearchIcon />
+                        </IconButton>
+                    </Paper>
+                </Stack>
             </Col>
         </>
     );
