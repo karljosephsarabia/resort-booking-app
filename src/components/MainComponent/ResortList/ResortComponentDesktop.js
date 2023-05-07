@@ -1,27 +1,24 @@
-import ResortCart from "./ResortCard";
+import ResortCard from "./ResortCard";
 import { Col, Row } from "react-bootstrap";
-import { useSelector, useDispatch } from 'react-redux';
-import { setResortList } from "../../../store/ResponsiveSlice";
-import { useEffect } from "react";
+import { useSelector } from 'react-redux';
 
 export default function ResortComponentDesktop() {
     const resortList = useSelector(state => state.resortList);
-    const dispatch = useDispatch();
+    const search = useSelector(state => state.search);
 
-    useEffect(() => {
-        fetch('http://127.0.0.1:8000/api/resorts')
-            .then(res => res.json())
-            .then(data => {
-                const { resorts } = data;
-                dispatch(setResortList(resorts));
-            });
-    }, [dispatch]);
+    const searchResort = resortList.filter(resort => {
+        return (
+            resort.title.toLowerCase().includes(search.toLowerCase()) ||
+            resort.location.toLowerCase().includes(search.toLowerCase())
+        )
+    })
 
     return (
         <>
-            <Col sm={12} className="mb-5">
+            <Col sm={12} className="mb-5 w-75 d-flex justify-content-center rounded-3"
+                style={{ position: "relative", top: "-20px", zIndex: "1", paddingTop: "5rem", paddingBottom: "4rem", boxShadow: "0px 0px 20px", background: "rgba(100, 184, 177, 0.3)" }}>
                 <Row className="gy-4 mx-5">
-                   { resortList.map((resort, index) => <ResortCart key={index} resort={resort} />)} 
+                    {searchResort.map((resort, index) => <ResortCard key={index} resort={resort} />)}
                 </Row >
             </Col>
         </>
