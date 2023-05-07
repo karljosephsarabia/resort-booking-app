@@ -1,20 +1,22 @@
 {
   "files": {
-    "main.css": "/resort-booking-app/static/css/main.fcdc11f0.css",
-    "main.js": "/resort-booking-app/static/js/main.184a2639.js",
+    "main.css": "/resort-booking-app/static/css/main.3971d445.css",
+    "main.js": "/resort-booking-app/static/js/main.dd274ab1.js",
     "static/js/787.28934a2e.chunk.js": "/resort-booking-app/static/js/787.28934a2e.chunk.js",
+    "static/media/about1.jpg": "/resort-booking-app/static/media/about1.a70a1841e131655bea38.jpg",
     "static/media/background.jpg": "/resort-booking-app/static/media/background.f0c95705e84a37b12a50.jpg",
+    "static/media/image2.png": "/resort-booking-app/static/media/image2.b0d9167803b0bde1e8d8.png",
     "static/media/Fontspring-DEMO-resort-scriptblack.otf": "/resort-booking-app/static/media/Fontspring-DEMO-resort-scriptblack.1a3f1c7dba8a01fdfb90.otf",
     "static/media/Fontspring-DEMO-resort-sansbold.otf": "/resort-booking-app/static/media/Fontspring-DEMO-resort-sansbold.eb861709cd790cf1900c.otf",
     "static/media/Fontspring-DEMO-resort-sansregular.otf": "/resort-booking-app/static/media/Fontspring-DEMO-resort-sansregular.c7e6192cc2d407f284e1.otf",
     "static/media/Fontspring-DEMO-resort-sansblack.otf": "/resort-booking-app/static/media/Fontspring-DEMO-resort-sansblack.1a8a8afe2e4e96a2dd38.otf",
     "index.html": "/resort-booking-app/index.html",
-    "main.fcdc11f0.css.map": "/resort-booking-app/static/css/main.fcdc11f0.css.map",
-    "main.184a2639.js.map": "/resort-booking-app/static/js/main.184a2639.js.map",
+    "main.3971d445.css.map": "/resort-booking-app/static/css/main.3971d445.css.map",
+    "main.dd274ab1.js.map": "/resort-booking-app/static/js/main.dd274ab1.js.map",
     "787.28934a2e.chunk.js.map": "/resort-booking-app/static/js/787.28934a2e.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fcdc11f0.css",
-    "static/js/main.184a2639.js"
+    "static/css/main.3971d445.css",
+    "static/js/main.dd274ab1.js"
   ]
 }
