@@ -1,0 +1,18 @@
+@font-face {
+    font-family: "sansblack";
+    src: url("../../../Resort\ Fonts/Fontspring-DEMO-resort-sansblack.otf");
+}
+
+@font-face {
+    font-family: "sansregular";
+    src: url("../../../Resort\ Fonts/Fontspring-DEMO-resort-sansregular.otf");
+}
+
+@font-face {
+    font-family: "sansbold";
+    src: url("../../../Resort\ Fonts/Fontspring-DEMO-resort-sansbold.otf");
+}
+
+* {
+    font-family: sansblack;
+}
