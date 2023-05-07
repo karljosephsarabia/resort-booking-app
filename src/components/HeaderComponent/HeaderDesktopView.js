@@ -4,13 +4,14 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import LoginIcon from '@mui/icons-material/Login';
+import './style.css';
 
 export default function HeaderDesktopView() {
     return (
         <>
             {['sm'].map((expand) => (
                 <Navbar key={expand} bg="light" expand={expand} className="mb-3 bg-transparent">
-                    <Container fluid className='align-items-center'>
+                    <Container fluid className='align-items-center mx-5'>
                         <Navbar.Brand href="#" className='fs-5'>LOGO</Navbar.Brand>
                         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas
@@ -24,7 +25,7 @@ export default function HeaderDesktopView() {
                                 </Offcanvas.Title>
                             </Offcanvas.Header>
                             <Offcanvas.Body>
-                                <Nav className="justify-content-center align-items-center flex-grow-1 pe-3">
+                                <Nav className="justify-content-center align-items-center flex-grow-1 pe-3 gap-5">
                                     <Nav.Link href="/resort-booking-app" className='text-uppercase fs-5'>Home</Nav.Link>
                                     <Nav.Link href="/resort-booking-app/resortList" className='text-uppercase fs-5'>Destination</Nav.Link>
                                     <Nav.Link href="#action2" className='text-uppercase fs-5'>About</Nav.Link>

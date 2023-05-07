@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "scriptblack";
+    src: url("../../Resort\ Fonts/Fontspring-DEMO-resort-scriptblack.otf");
+}
+
+@font-face {
+    font-family: "sansblack";
+    src: url("../../Resort\ Fonts/Fontspring-DEMO-resort-sansblack.otf");
+}
+
+* {
+    font-family: sansblack;
+}
