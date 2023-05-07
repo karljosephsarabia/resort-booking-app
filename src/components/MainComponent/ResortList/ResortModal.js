@@ -1,11 +1,10 @@
 import { Typography } from '@mui/material';
-import { Col, Row, Nav, Stack, Tab, Tabs, Carousel } from 'react-bootstrap';
+import { Col, Row, Stack, Tab, Tabs, Carousel } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { useState } from 'react';
 
 export default function ResortModal({ onHide, resort, show }) {
-    console.log(resort);
     const [key, setKey] = useState('overview');
     return (
         <>
@@ -23,7 +22,7 @@ export default function ResortModal({ onHide, resort, show }) {
                     </Stack>
 
                 </Modal.Header>
-                <Modal.Body style={{height: "488px"}} className='mb-4'>
+                <Modal.Body style={{ height: "488px" }} className='mb-4'>
                     <Tabs
                         id="controlled-tab-example"
                         activeKey={key}
@@ -31,7 +30,7 @@ export default function ResortModal({ onHide, resort, show }) {
                         className="mb-3"
                     >
                         <Tab eventKey="overview" title="Overview">
-                            <Row>
+                            <Row> 
                                 <Col>
                                     <Carousel>
                                         {resort.images.map((image, index) => (
@@ -50,10 +49,40 @@ export default function ResortModal({ onHide, resort, show }) {
                             </Row>
                         </Tab>
                         <Tab eventKey="description" title="Description">
-                            {resort.description }
+                            {resort.description}
                         </Tab>
                         <Tab eventKey="accomodation" title="Accommodation">
-                            Tab content for Profile
+                            <Carousel fade>
+                                {resort.room.map((resortItem, index) => (
+                                    <Carousel.Item className='d-flex flex-column mt-3 bg-white' key={index}>
+                                        <Typography variant='h5'>{resortItem.title}</Typography>
+                                        <div className='d-flex flex-row gap-3'>
+                                            <img
+                                                className="d-block"
+                                                src={resortItem.images}
+                                                alt="First slide"
+                                                style={{ height: "53vh", width: "33vw" }}
+                                            />
+                                            <Stack className='d-flex justify-content-between'>
+                                            <h5>Features: </h5>
+                                            { resortItem.features.map((feature, index) => (
+                                                <ul key={index} className='mb-1'>
+                                                    <li >{ feature }</li>
+                                                </ul>
+                                            ))
+                                             }
+                                                <h5>Amenities: </h5>
+                                                { resortItem.amenities.map((amenity, index) => (
+                                                <ul key={index} className='mb-1'>
+                                                    <li>{ amenity }</li>
+                                                </ul>
+                                                ))}
+                                                
+                                            </Stack>
+                                        </div>
+                                    </Carousel.Item>
+                                ))}
+                            </Carousel>
                         </Tab>
                         <Tab eventKey="contact" title="Contact">
                             <Stack gap={5} className='mt-5'>
@@ -64,8 +93,8 @@ export default function ResortModal({ onHide, resort, show }) {
                         </Tab>
                     </Tabs>
                 </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={onHide}>Close</Button>
+                <Modal.Footer className='d-flex justify-content-center'>
+                    <Button onClick={onHide} className='px-5'>Book now</Button>
                 </Modal.Footer>
             </Modal>
         </>
