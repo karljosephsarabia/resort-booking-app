@@ -8,7 +8,7 @@ export default function ExploreContentDesktop() {
     const navigate = useNavigate();
 
     function handleClick() {
-        navigate('/resortList');
+        navigate('/resort-booking-app/resortList');
     }
     return (
         <>
