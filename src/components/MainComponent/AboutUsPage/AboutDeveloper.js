@@ -1,5 +1,5 @@
 import React from 'react'
-import Victor from './images/about1.jpg'
+import Victor from './images/about2.jpg'
 import './About.css'
 
 
@@ -12,7 +12,7 @@ function Developer() {
                 </div>
                 <div >
                     <div class="lg-12 " id='about-content'>
-                        <p>leisure destination providing a compelling mix of luxury relaxation and wellness, lively entertainment, and exciting recreational activities including captivating child-friendly facilities.
+                        <p>Leisure destination providing a compelling mix of luxury relaxation and wellness, lively entertainment, and exciting recreational activities including captivating child-friendly facilities.
                             Guests can savour beach-side luxe within its spacious guest rooms and suites, along with enticing wining and dining options.
                         </p>
                         <img src={Victor} alt="resorts" id='about-photo' />
