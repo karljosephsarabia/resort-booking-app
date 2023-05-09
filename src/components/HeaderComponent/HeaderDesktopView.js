@@ -6,6 +6,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import LoginIcon from '@mui/icons-material/Login';
 import './style.css';
 import { useNavigate } from 'react-router-dom';
+import logoImage from './Tropicana_Getaway.png';
 
 export default function HeaderDesktopView() {
     const navigate = useNavigate();
@@ -16,7 +17,9 @@ export default function HeaderDesktopView() {
             {['sm'].map((expand) => (
                 <Navbar key={expand} bg="light" expand={expand} className="mb-3 bg-transparent">
                     <Container fluid className='align-items-center mx-5'>
-                        <Navbar.Brand href="#" className='fs-5'>LOGO</Navbar.Brand>
+                        <Navbar.Brand href="#" className='fs-5'>
+                            <img src={logoImage} alt="Tropicana Getaway" style={{ width: '150px', height: '150px' }} />
+                        </Navbar.Brand>
                         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas
                             id={`offcanvasNavbar-expand-${expand}`}

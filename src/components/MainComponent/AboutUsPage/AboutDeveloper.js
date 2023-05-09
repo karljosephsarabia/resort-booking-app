@@ -1,5 +1,5 @@
 import React from 'react'
-import Victor from './images/about1.jpg'
+import Victor from './images/about2.jpg'
 import './About.css'
 
 
@@ -12,15 +12,10 @@ function Developer() {
                 </div>
                 <div >
                     <div class="lg-12 " id='about-content'>
-                        <p>Welcome to our booking app! We are a team of
-                            passionate developers who strive to make your booking experience
-                            as easy and convenient as possible.
-                            Our app was designed with the user in mind, taking into consideration the different
-                            needs and preferences of our diverse user base. We understand that everyone's schedule is different,
-                            which is why our app offers flexible
-                            booking options that allow you to easily make reservations at your own convenience.
+                        <p>Leisure destination providing a compelling mix of luxury relaxation and wellness, lively entertainment, and exciting recreational activities including captivating child-friendly facilities.
+                            Guests can savour beach-side luxe within its spacious guest rooms and suites, along with enticing wining and dining options.
                         </p>
-                        <img src={Victor} alt="resorts" id='about-photo' />
+                        {/* <img src={Victor} alt="resorts" id='about-ph' /> */}
                     </div>
                 </div>
             </div>
