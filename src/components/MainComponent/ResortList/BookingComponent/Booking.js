@@ -1,6 +1,6 @@
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row, Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Stack } from '@mui/material';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -19,6 +19,14 @@ import TextField from '@mui/material/TextField';
 import Checkbox from '@mui/material/Checkbox';
 import CloseButton from 'react-bootstrap/CloseButton';
 import { setBook } from '../../../../store/ResponsiveSlice';
+import Radio from '@mui/material/Radio';
+import RadioGroup from '@mui/material/RadioGroup';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import CardContent from '@mui/material/CardContent';
+
+import ChooseDate from './ChooseDate';
+import SelectRoom from './SelectRoom';
+import CustomerDetails from './CustomerDetails';
 
 
 export default function Booking() {
