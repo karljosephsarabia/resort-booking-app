@@ -68,77 +68,7 @@ export default function Booking() {
 
     return (
         <>
-            <Container fluid>
-                {bookStatus && <Row className='bg-white'>
-                    <Col xs={7} className='d-flex justify-content-center py-5 border'>
-                        <Box sx={{ width: '75%' }}>
-                            <Stepper activeStep={activeStep}>
-                                {steps.map((label, index) => {
-                                    const stepProps = {};
-                                    const labelProps = {};
-                                    return (
-                                        <Step key={label} {...stepProps}>
-                                            <StepLabel {...labelProps}>{label}</StepLabel>
-                                        </Step>
-                                    );
-                                })}
-                            </Stepper>
-                            {activeStep === steps.length ? (
-                                <React.Fragment>
-                                    <Typography sx={{ mt: 2, mb: 1 }}>
-                                        All steps completed - you&apos;re finished
-                                    </Typography>
-                                    <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-                                        <Box sx={{ flex: '1 1 auto' }} />
-                                        <Button onClick={handleReset}>Reset</Button>
-                                    </Box>
-                                </React.Fragment>
-                            ) : (
-                                <React.Fragment>
-                                    {activeStep === 0 &&
-                                        <Stack className='border my-5 w-75 mx-auto'>
-                                            <div className='bg-danger d-flex justify-content-center'>Make Reservation</div>
-                                            <div className='d-flex flex-column align-items-center my-4'>
-                                                <h5>You Stay Dates</h5>
-                                                <div className='d-flex flex-row gap-3 mx-5'>
-                                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                                        <DemoContainer components={['DatePicker']}>
-                                                            <DatePicker label="Check-in" slotProps={{ textField: { size: 'small' } }} />
-                                                        </DemoContainer>
-                                                    </LocalizationProvider>
-                                                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                                                        <DemoContainer components={['DatePicker']}>
-                                                            <DatePicker label="Check-out" slotProps={{ textField: { size: 'small' } }} />
-                                                        </DemoContainer>
-                                                    </LocalizationProvider>
-                                                </div>
-                                            </div>
-                                            <div className='d-flex flex-column align-items-center'>
-                                                <h5>ROOM & Guest</h5>
-                                                <div className='d-flex flex-row'>
-                                                    <FormControl size='small' sx={{ width: "27vw" }}>
-                                                        <InputLabel id="demo-simple-select-label" >Number of Room</InputLabel>
-                                                        <Select
-                                                            labelId="demo-simple-select-label"
-                                                            id="demo-simple-select"
-                                                            value={totalRoom}
-                                                            label="Total Room"
-                                                            onChange={handleChange}
-
-                                                        >
-                                                            <MenuItem value={1}>1 Room</MenuItem>
-                                                            <MenuItem value={2}>2 Room</MenuItem>
-                                                            <MenuItem value={3}>3 Room</MenuItem>
-                                                            <MenuItem value={4}>4 Room</MenuItem>
-                                                            <MenuItem value={5}>5 Room</MenuItem>
-                                                        </Select>
-                                                    </FormControl>
-                                                </div>
-                                                <div className='d-flex flex-row gap-3 mx-5 mt-4 mb-5'>
-                                                    <div>
-                                                        <h5>Adult</h5>
-                                                        <TextField id="outlined-basic" label="adult" variant="outlined" size='small' type='number' />
-                                                    </div>
+                                        {activeStep === 0 && <ChooseDate onChange={handleOnInput} reservationError={reservationError} reservation={reservation} />}
                                                     <div>
                                                         <h5>Child</h5>
                                                         <TextField id="outlined-basic" label="child" variant="outlined" size='small' type='number' />
