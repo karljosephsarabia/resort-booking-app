@@ -28,15 +28,17 @@
 }
 
 .hero-banner-name-desktop {
-    font-family: scriptblack;
-    font-size: 10rem;
+    font-family: delatto;
+    font-size: 3.5rem;
     letter-spacing: 0.5rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 }
 
 .hero-banner-text-desktop {
-    font-family: sansblack;
+    font-family: montserrat-extra;
     position: absolute;
-    bottom: 0;
-    right: -5rem;
-    font-size: 1.4rem;
+    top: -1rem;
+    left: -5rem;
+    font-size: 1.75rem;
 }
