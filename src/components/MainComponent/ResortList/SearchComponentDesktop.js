@@ -18,7 +18,7 @@ export default function SearchComponentDesktop() {
         <>
             <Col sm={12} className="d-flex justify-content-center">
                 <Stack className="d-flex flex-column align-items-center">
-                    <h1 className="hero-banner-name-desktop position-relative mb-5">Dora<span className="hero-banner-text-desktop fs-6 w-100 position-absolute" style={{bottom: "-0.5rem"}}>Travel like dora, discover like an explorer</span></h1>
+                <h5 className="hero-banner-name-desktop position-relative"><span className="hero-banner-text-desktop">Experience the magic of the beach with</span>Tropicana Getaway</h5>
                     <Booking />
                     <Paper
                         component="form"

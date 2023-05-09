@@ -7,7 +7,7 @@ export default function HeroBannerDesktop() {
         <>
             <Row>
                 <Col className="d-flex flex-column align-items-center">
-                    <h1 className="hero-banner-name-desktop position-relative">Dora<span className="hero-banner-text-desktop">Travel and Explore</span></h1>
+                    <h5 className="hero-banner-name-desktop position-relative"><span className="hero-banner-text-desktop">Experience the magic of the beach with</span>Tropicana Getaway</h5>
                 </Col>
             </Row>
         </>
