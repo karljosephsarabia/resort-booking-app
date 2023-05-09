@@ -64,6 +64,8 @@ export default function Booking() {
         }
     });
 
+    const steps = ['Choose Date', 'Select a Room', 'Customer Details', 'Payment Method'];
+
     const handleNext = () => {
         let hasError = false;
         if (activeStep === 0) {
@@ -263,40 +265,130 @@ export default function Booking() {
 
     return (
         <>
+            <Container fluid >
+                {bookStatus &&
+                    <Row className='bg-white' id='booking'>
+                        <Col xs={8} className='d-flex justify-content-center py-5 border'>
+                            <Box sx={{ width: '75%' }}>
+                                <Stepper activeStep={activeStep}>
+                                    {steps.map((label, index) => {
+                                        const stepProps = {};
+                                        const labelProps = {};
+                                        return (
+                                            <Step key={label} {...stepProps}>
+                                                <StepLabel {...labelProps}>{label}</StepLabel>
+                                            </Step>
+                                        );
+                                    })}
+                                </Stepper>
+                                {activeStep === steps.length ? (
+                                    <React.Fragment>
+                                        <Typography sx={{ mt: 2, mb: 1 }}>
+                                            All steps completed - you&apos;re finished
+                                        </Typography>
+                                    </React.Fragment>
+                                ) : (
+                                    <React.Fragment>
                                         {activeStep === 0 && <ChooseDate onChange={handleOnInput} reservationError={reservationError} reservation={reservation} />}
                                         {activeStep === 1 && <SelectRoom key={activeStep} selectedResort={selectedResort} onChange={handleRoom} reservationError={reservationError} />}
                                         {activeStep === 2 && <CustomerDetails key={activeStep} onChange={handleOnCustomerInfo} reservationError={reservationError} />}
+                                        {activeStep === 3 &&
+                                            <Card className='my-4'>
+                                                <Stack>
+                                                    <Row className=''>
+                                                        <RadioGroup
+                                                            aria-labelledby="demo-radio-buttons-group-label"
+                                                            defaultValue="paypal"
+                                                            name="radio-buttons-group">
+                                                            <Col className='border-bottom d-flex justify-content-between align-items-center px-5 py-2'>
+                                                                <div className='d-flex flex-column'>
+                                                                    <FormControlLabel value="paypal" control={<Radio />} label="Paypal" />
+                                                                    <Typography variant={'caption'} className='ms-4 w-75 text-secondary'>Paypal is a secure way to pay online with your credit card without sharing information directly with the merchant.</Typography>
+                                                                </div>
+                                                                <div style={{ width: "156px" }} className='d-flex justify-content-center'>
+                                                                    <i className="fa-brands fa-cc-paypal fa-2xl"></i>
+                                                                </div>
+                                                            </Col>
+                                                            <Col className='border-bottom d-flex justify-content-between align-items-center px-5 py-2'>
+                                                                <div className='d-flex flex-column'>
+                                                                    <FormControlLabel value="credit-card" control={<Radio />} label="Credit Card" />
+                                                                    <Typography variant={'caption'} className='ms-4 w-75 text-secondary'>A credit card allows you to make secure and convenient online purchases by entering your card information at checkout.</Typography>
+                                                                </div>
+                                                                <div className='d-flex gap-1' style={{ width: "156px" }}>
+                                                                    <i className="fa-brands fa-cc-visa fa-2xl"></i>
+                                                                    <i className="fa-brands fa-cc-mastercard fa-2xl"></i>
+                                                                    <i className="fa-brands fa-cc-jcb fa-2xl"></i>
+                                                                    <i className="fa-brands fa-cc-amex fa-2xl"></i>
+                                                                </div>
+                                                            </Col>
+                                                        </RadioGroup>
+                                                    </Row>
+                                                    <div>
+                                                        <Stack className='my-5'>
+                                                            <div className='mx-5'>
+                                                                <Typography variant='subtitle2'>CREDIT CARD NUMBER</Typography>
+                                                                <TextField variant="outlined" size='small' fullWidth />
                                                             </div>
-                                                            <Checkbox />
-                                                        </div>
+                                                            <div className='mx-5 d-flex gap-5 my-4'>
+                                                                <Typography variant='subtitle2'>CVV CODE <TextField variant="outlined" size='small' fullWidth /></Typography>
+                                                                <Typography variant='subtitle2'>EXPIRY DATE<TextField variant="outlined" size='small' fullWidth /></Typography>
+                                                            </div>
+                                                            <div className='mx-5'>
+                                                                <Typography variant='subtitle2'>NAME ON CARD</Typography>
+                                                                <TextField variant="outlined" size='small' fullWidth />
+                                                            </div>
+                                                        </Stack>
                                                     </div>
-                                                </div>))}
-                                            </div>
-                                        </Stack>}
-                                    {activeStep === 2 && <Typography sx={{ mt: 2, mb: 1 }}>Step 3</Typography>}
-                                    {activeStep === 3 && <Typography sx={{ mt: 2, mb: 1 }}>Step 4</Typography>}
-                                    <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-                                        <Button
-                                            color="inherit"
-                                            disabled={activeStep === 0}
-                                            onClick={handleBack}
-                                            sx={{ mr: 1 }}
-                                        >
-                                            Back
-                                        </Button>
-                                        <Box sx={{ flex: '1 1 auto' }} />
-                                        <Button onClick={handleNext}>
-                                            {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
-                                        </Button>
-                                    </Box>
-                                </React.Fragment>
-                            )}
-                        </Box>
-                    </Col>
-                    <Col sc={5} className='d-flex justify-content-end'>
-                        <CloseButton className='mt-2' onClick={HandleCloseBook} />
-                    </Col>
-                </Row>}
+                                                </Stack>
+                                            </Card>}
+                                        <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+                                            <Button
+                                                color="primary"
+                                                disabled={activeStep === 0}
+                                                onClick={handleBack}
+                                                sx={{ mr: 1 }}
+                                                variant='contained'
+                                            >
+                                                Back
+                                            </Button>
+                                            <Box sx={{ flex: '1 1 auto' }} />
+                                            <Button onClick={handleNext} variant='contained'>
+                                                {activeStep === steps.length - 1 ? 'Confirm Payment' : 'Continue'}
+                                            </Button>
+                                        </Box>
+                                    </React.Fragment>
+                                )}
+                            </Box>
+                        </Col>
+                        <Col sx={4} className='d-flex flex-column'>
+                            <div className='d-flex justify-content-end'>
+                                <CloseButton className='mt-2 d-flex flex-row-reverse' onClick={HandleCloseBook} />
+                            </div>
+                            <Card className='my-4 mx-5'>
+                                <CardContent>
+                                    <Typography className='text-center border-bottom pb-3 text-uppercase'>Reservation Details</Typography>
+                                    <Typography className='text-center py-4 text-uppercase px-4' variant='h5'>{selectedResort.title}</Typography>
+                                    <div className='my-1 mx-4'>
+                                        <Typography className='d-flex justify-content-between text-uppercase'>Check-In
+                                            {activeStep !== 0 && <Typography>{reservation['check-in']}</Typography>}
+                                        </Typography>
+                                        <Typography className='d-flex justify-content-between my-3 text-uppercase'>Check-Out
+                                            {activeStep !== 0 && <Typography>{reservation['check-out']}</Typography>}
+                                        </Typography>
+                                        <Typography className='d-flex justify-content-between text-uppercase'>Total Nights
+                                            {activeStep !== 0 && <Typography>{reservation['total-night']}</Typography>}
+                                        </Typography>
+                                        <Typography className='d-flex justify-content-between my-3 text-uppercase'>Total Rooms
+                                            {activeStep !== 0 && <Typography>{reservation['total-room']}</Typography>}
+                                        </Typography>
+                                        <Typography className='d-flex justify-content-between border-bottom pb-4 text-uppercase'>Guest
+                                            {activeStep !== 0 && <Typography>{reservation['guest-adult']} Adult {reservation['guest-child']} Child</Typography>}
+                                        </Typography>
+                                    </div>
+                                </CardContent>
+                            </Card>
+                        </Col>
+                    </Row>}
             </Container>
         </>
     );
