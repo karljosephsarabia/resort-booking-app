@@ -69,6 +69,7 @@ export default function Booking() {
     return (
         <>
                                         {activeStep === 0 && <ChooseDate onChange={handleOnInput} reservationError={reservationError} reservation={reservation} />}
+                                        {activeStep === 1 && <SelectRoom key={activeStep} selectedResort={selectedResort} onChange={handleRoom} reservationError={reservationError} />}
                                         {activeStep === 2 && <CustomerDetails key={activeStep} onChange={handleOnCustomerInfo} reservationError={reservationError} />}
                                                             </div>
                                                             <Checkbox />
