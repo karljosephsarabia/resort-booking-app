@@ -1,6 +1,6 @@
 @font-face {
-    font-family: "sansblack";
-    src: url("../../../../Resort\ Fonts/Fontspring-DEMO-resort-sansblack.otf");
+    font-family: "orange-lemonade";
+    src: url("../../../../Font/Montserrat-ExtraBold.ttf");
 }
 
 @font-face {
@@ -23,7 +23,7 @@
 }
 
 .main-content-text-desktop {
-    font-family: sansblack;
+    font-family: orange-lemonade;
     font-size: 3.5rem;
 }
 

@@ -1,11 +1,16 @@
 @font-face {
-    font-family: "scriptblack";
-    src: url("../../../../Resort\ Fonts/Fontspring-DEMO-resort-scriptblack.otf");
+    font-family: "delatto";
+    src: url("../../../../Font/DeLatto.ttf");
 }
 
 @font-face {
-    font-family: "sansblack";
-    src: url("../../../../Resort\ Fonts/Fontspring-DEMO-resort-sansblack.otf");
+    font-family: "tropicalparadise";
+    src: url("../../../../Font/Tropical\ Paradise.ttf");
+}
+
+@font-face {
+    font-family: "montserrat-extra";
+    src: url("../../../../Font/Orange\ Lemonade.otf");
 }
 
 .hero-banner-name-mobile {
