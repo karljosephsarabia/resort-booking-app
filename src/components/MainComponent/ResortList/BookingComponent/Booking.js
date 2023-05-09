@@ -32,11 +32,12 @@ import CustomerDetails from './CustomerDetails';
 export default function Booking() {
     const book = useSelector(state => state.book);
     const { bookStatus, selectedResort } = book;
-    console.log(selectedResort);
-    const [totalRoom, setTotalRoom] = React.useState('');
+    const [activeStep, setActiveStep] = useState(0);
     const dispatch = useDispatch();
 
-    const steps = ['Choose Date', 'Select a Room', 'Customer Details', 'Payment'];
+    const [reservationError, setReservationError] = useState({});
+    console.log(reservation);
+    console.log(reservationError);
 
     const { sectionIdToScrollTo } = useSelector(state => state.booking);
     console.log(sectionIdToScrollTo);
@@ -51,7 +52,137 @@ export default function Booking() {
     });
 
     const handleNext = () => {
-        setActiveStep((prevActiveStep) => prevActiveStep + 1);
+        let hasError = false;
+        if (activeStep === 0) {
+            if (!reservation['check-in']) {
+                setReservationError(prevState => ({ ...prevState, 'check-in': true }));
+                hasError = true;
+            } else {
+                setReservationError(prevState => ({ ...prevState, 'check-in': false }));
+                hasError = false;
+            }
+
+            if (!reservation['check-out']) {
+                setReservationError(prevState => ({ ...prevState, 'check-out': true }));
+                hasError = true;
+            } else {
+                setReservationError(prevState => ({ ...prevState, 'check-out': false }));
+                hasError = false;
+            }
+
+            if (!reservation['total-room']) {
+                setReservationError(prevState => ({ ...prevState, 'total-room': true }));
+                hasError = true;
+            } else {
+                setReservationError(prevState => ({ ...prevState, 'total-room': false }));
+                hasError = false;
+            }
+
+            if (!reservation['guest-adult']) {
+                setReservationError(prevState => ({ ...prevState, 'guest-adult': true }));
+                hasError = true;
+            } else {
+                setReservationError(prevState => ({ ...prevState, 'guest-adult': false }));
+                hasError = false;
+            }
+
+            if (!reservation['guest-child']) {
+                setReservationError(prevState => ({ ...prevState, 'guest-child': true }));
+                hasError = true;
+            } else {
+                setReservationError(prevState => ({ ...prevState, 'guest-child': false }));
+                hasError = false;
+            }
+
+            if (!hasError) {
+                setActiveStep((prevActiveStep) => prevActiveStep + 1);
+            }
+        } else if (activeStep === 1) {
+            console.log(reservation);
+
+            if (reservation['room-type'].length === 0) {
+                setReservationError(prevState => ({ ...prevState, 'room-type': true }));
+                hasError = true;
+            } else {
+                setReservationError(prevState => ({ ...prevState, 'room-type': false }));
+                hasError = false;
+            }
+
+            if (!hasError) {
+                setActiveStep((prevActiveStep) => prevActiveStep + 1);
+            }
+        } else if (activeStep === 2) {
+            if (reservation.name.length !== 2) {
+                console.log(reservation.name['first-name']);
+                if (!reservation.name['first-name'] || reservation.name['first-name'] === undefined) {
+                    setReservationError(prevState => ({ ...prevState, 'first-name': true }));
+                    hasError = true;
+                } else {
+                    setReservationError(prevState => ({ ...prevState, 'first-name': false }));
+                    hasError = false;
+                }
+
+                if (!reservation.name['last-name'] || reservation.name['last-name'] === undefined) {
+                    setReservationError(prevState => ({ ...prevState, 'last-name': true }));
+                    hasError = true;
+                } else {
+                    setReservationError(prevState => ({ ...prevState, 'last-name': false }));
+                    hasError = false;
+                }
+
+                if (!reservation.address['home-address'] || reservation.address['home-address'] === undefined) {
+                    setReservationError(prevState => ({ ...prevState, 'home-address': true }));
+                    hasError = true;
+                } else {
+                    setReservationError(prevState => ({ ...prevState, 'home-address': false }));
+                    hasError = false;
+                }
+
+                if (!reservation.address.city || reservation.address.city === undefined) {
+                    setReservationError(prevState => ({ ...prevState, city: true }));
+                    hasError = true;
+                } else {
+                    setReservationError(prevState => ({ ...prevState, city: false }));
+                    hasError = false;
+                }
+
+                if (!reservation.address.state || reservation.address.state === undefined) {
+                    setReservationError(prevState => ({ ...prevState, state: true }));
+                    hasError = true;
+                } else {
+                    setReservationError(prevState => ({ ...prevState, state: false }));
+                    hasError = false;
+                }
+
+                if (!reservation.address.zipcode || reservation.address.zipcode === undefined) {
+                    setReservationError(prevState => ({ ...prevState, zipcode: true }));
+                    hasError = true;
+                } else {
+                    setReservationError(prevState => ({ ...prevState, zipcode: false }));
+                    hasError = false;
+                }
+
+                if (!reservation.phone || reservation.phone === undefined) {
+                    setReservationError(prevState => ({ ...prevState, phone: true }));
+                    hasError = true;
+                } else {
+                    setReservationError(prevState => ({ ...prevState, phone: false }));
+                    hasError = false;
+                }
+
+                if (!reservation['email-address'] || reservation['email-address'] === undefined) {
+                    setReservationError(prevState => ({ ...prevState, 'email-address': true }));
+                    hasError = true;
+                } else {
+                    setReservationError(prevState => ({ ...prevState, 'email-address': false }));
+                    hasError = false;
+                }
+
+                if (!hasError) {
+                    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+                }
+            }
+        }
     };
 
     const handleBack = () => {
