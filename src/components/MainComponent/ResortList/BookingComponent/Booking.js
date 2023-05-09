@@ -34,6 +34,19 @@ export default function Booking() {
     const { bookStatus, selectedResort } = book;
     const [activeStep, setActiveStep] = useState(0);
     const dispatch = useDispatch();
+    const [reservation, setReservation] = useState({
+        'check-in': '',
+        'check-out': '',
+        'total-night': '',
+        'total-room': '',
+        'guest-adult': '',
+        'guest-child': '',
+        'room-type': [],
+        name: [],
+        address: [],
+        phone: '',
+        'email-address': ''
+    });
 
     const [reservationError, setReservationError] = useState({});
     console.log(reservation);
@@ -189,20 +202,63 @@ export default function Booking() {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    const handleReset = () => {
-        setActiveStep(0);
-    };
-
-    const handleChange = (event) => {
-        setTotalRoom(event.target.value);
-    };
-
     const HandleCloseBook = () => {
         dispatch(setBook({
             bookStatus: false,
             selectedResort: []
         }));
         setActiveStep(0);
+    };
+
+    const handleOnInput = (e, input) => {
+        console.log(e);
+        if (input === 'check-in') {
+            setReservation(prevState => ({
+                ...prevState,
+                'check-in': e.$d.toDateString()
+            }));
+        } else if (input === 'check-out') {
+            setReservation(prevState => ({
+                ...prevState,
+                'check-out': e.$d.toDateString()
+            }));
+        } else {
+            setReservation(prevState => ({
+                ...prevState,
+                [e.target.name]: e.target.value
+            }));
+        }
+    };
+
+    const handleRoom = (e) => {
+        if (e.target.checked) {
+            setReservation(prevState => {
+                const newReservation = { ...prevState, 'room-type': [...prevState['room-type'], { title: e.target.name, price: e.target.value }] };
+                return newReservation;
+            });
+        } else {
+            const updatedRoomTypes = reservation['room-type'].filter(roomType => roomType.title !== e.target.name);
+            setReservation({ ...reservation, 'room-type': updatedRoomTypes });
+        }
+    };
+
+    const handleOnCustomerInfo = (e) => {
+        if (e.target.name === 'first-name' || e.target.name === 'last-name') {
+            setReservation(prevState => {
+                const newName = { ...prevState, name: { ...prevState.name, [e.target.name]: e.target.value } };
+                return newName;
+            });
+        } else if (e.target.name === 'home-address' || e.target.name === 'city' || e.target.name === 'state' || e.target.name === 'zipcode') {
+            setReservation(prevState => {
+                const newAddress = { ...prevState, address: { ...prevState.address, [e.target.name]: e.target.value } };
+                return newAddress;
+            });
+        } else {
+            setReservation(prevState => ({
+                ...prevState,
+                [e.target.name]: e.target.value
+            }));
+        }
     };
 
     return (
