@@ -18,7 +18,7 @@ export default function HeaderDesktopView() {
                 <Navbar key={expand} bg="light" expand={expand} className="mb-0 bg-transparent p-0">
                     <Container fluid className='align-items-center mx-5'>
                         <Navbar.Brand href="#" className='fs-5'>
-                            <img src={logoImage} alt="Tropicana Getaway" style={{ width: '150px', height: '150px' }} />
+                            <img src={logoImage} alt="Tropicana Getaway" style={{ width: '125px', height: '125px' }} />
                         </Navbar.Brand>
                         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
                         <Navbar.Offcanvas
