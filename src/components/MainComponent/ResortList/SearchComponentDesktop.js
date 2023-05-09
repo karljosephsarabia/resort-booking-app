@@ -22,11 +22,11 @@ export default function SearchComponentDesktop() {
                     <Booking />
                     <Paper
                         component="form"
-                        sx={{ p: '2px 20px', display: 'flex', alignItems: 'center', width: 700, borderRadius: "2rem", zIndex: "100", boxShadow: "inset -5px -5px 10px 0px rgba(255, 255, 255, 0.5), inset 5px 5px 10px 0px rgba(0, 0, 0, 0.3)", background: "rgb(100, 184, 177)" }}
+                        sx={{ p: '2px 20px', display: 'flex', alignItems: 'center', width: 700, borderRadius: "2rem", zIndex: "100", boxShadow: "inset -5px -5px 10px 0px rgba(255, 255, 255, 0.5), inset 5px 5px 10px 0px rgba(0, 0, 0, 0.3)", background: "white" }}
                         className="mt-5"
                     >
                         <InputBase
-                            sx={{ ml: 1, flex: 1 }}
+                            sx={{ ml: 1, flex: 1, paddingTop: "5px" }}
                             placeholder="Search Destination"
                             inputProps={{ 'aria-label': 'search google maps' }}
                             onChange={(e) => handleOnChange(e)}
