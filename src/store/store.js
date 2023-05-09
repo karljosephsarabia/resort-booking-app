@@ -1,6 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "@reduxjs/toolkit";
-import responsiveSlice, { resortListSlice, searchSlice, bookSlice } from "./ResponsiveSlice";
+import responsiveSlice, { resortListSlice, searchSlice, bookSlice, bookingSlice } from "./ResponsiveSlice";
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
@@ -8,7 +8,8 @@ const rootReducer = combineReducers({
     responsive: responsiveSlice.reducer,
     resortList: resortListSlice.reducer,
     search: searchSlice.reducer,
-    book: bookSlice.reducer
+    book: bookSlice.reducer,
+    booking: bookingSlice.reducer
     //add reducers
 });
 
@@ -25,7 +26,7 @@ function clearReducer(state, action) {
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['responsive', 'resortList', 'search']
+    whitelist: ['responsive', 'resortList', 'search', 'booking']
 };
 
 const persistedReducer = persistReducer(persistConfig, clearReducer);

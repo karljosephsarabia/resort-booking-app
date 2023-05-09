@@ -46,7 +46,20 @@ export const bookSlice = createSlice({
     }
 });
 
+export const bookingSlice = createSlice({
+    name: 'booking',
+    initialState: {
+        sectionIdToScrollTo: null
+    },
+    reducers: {
+        scrollToSection: (state, action) => {
+            state.sectionIdToScrollTo = action.payload;
+        }
+    }
+});
 
+
+export const { scrollToSection } = bookingSlice.actions;
 export const { setResponsive } = responsiveSlice.actions;
 export const { setResortList } = resortListSlice.actions;
 export const { setSearch } = searchSlice.actions;

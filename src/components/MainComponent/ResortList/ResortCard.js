@@ -9,7 +9,7 @@ import Rating from '@mui/material/Rating';
 import { useState } from 'react';
 import ResortModal from "./ResortModal";
 import { useDispatch } from 'react-redux';
-import { setBook } from "../../../store/ResponsiveSlice";
+import { setBook, scrollToSection } from "../../../store/ResponsiveSlice";
 import './style.css';
 
 
@@ -27,7 +27,9 @@ export default function ResortCard({ resort }) {
         dispatch(setBook({
             bookStatus: true,
             selectedResort: resort
-        }))
+        }));
+
+        dispatch(scrollToSection('booking'));
     };
 
     return (

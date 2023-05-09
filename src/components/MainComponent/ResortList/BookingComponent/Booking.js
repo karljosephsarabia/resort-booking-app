@@ -30,8 +30,17 @@ export default function Booking() {
 
     const steps = ['Choose Date', 'Select a Room', 'Customer Details', 'Payment'];
 
-    const [activeStep, setActiveStep] = React.useState(0);
+    const { sectionIdToScrollTo } = useSelector(state => state.booking);
+    console.log(sectionIdToScrollTo);
 
+    useEffect(() => {
+        if (sectionIdToScrollTo) {
+            const sectionElement = document.getElementById(sectionIdToScrollTo);
+            if (sectionElement) {
+                sectionElement.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
 
     const handleNext = () => {
         setActiveStep((prevActiveStep) => prevActiveStep + 1);
