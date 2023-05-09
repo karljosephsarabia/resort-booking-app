@@ -69,27 +69,7 @@ export default function Booking() {
     return (
         <>
                                         {activeStep === 0 && <ChooseDate onChange={handleOnInput} reservationError={reservationError} reservation={reservation} />}
-                                                    <div>
-                                                        <h5>Child</h5>
-                                                        <TextField id="outlined-basic" label="child" variant="outlined" size='small' type='number' />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </Stack>}
-                                    {activeStep === 1 &&
-                                        <Stack className='my-5'>
-                                            <div>Available Room</div>
-                                            <div>
-                                                {selectedResort.room.map((room, index) => (<div key={index} className="card mb-3" sx={{ maxWidth: "540px" }}>
-                                                    <div className="row g-0">
-                                                        <div className="col-md-4">
-                                                            <img src={room.images} class="img-fluid rounded-start h-100" alt={room.title} />
-                                                        </div>
-                                                        <div className="col-md-8 d-flex">
-                                                            <div className="card-body">
-                                                                <h5 className="card-title">{room.title}</h5>
-                                                                <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                                                <p class="card-text d-flex justify-content-end"><small class="text-body-secondary">PRICE: {room.price}</small></p>
+                                        {activeStep === 2 && <CustomerDetails key={activeStep} onChange={handleOnCustomerInfo} reservationError={reservationError} />}
                                                             </div>
                                                             <Checkbox />
                                                         </div>
