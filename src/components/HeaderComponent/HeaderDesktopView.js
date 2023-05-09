@@ -15,7 +15,7 @@ export default function HeaderDesktopView() {
     return (
         <>
             {['sm'].map((expand) => (
-                <Navbar key={expand} bg="light" expand={expand} className="mb-3 bg-transparent">
+                <Navbar key={expand} bg="light" expand={expand} className="mb-0 bg-transparent p-0">
                     <Container fluid className='align-items-center mx-5'>
                         <Navbar.Brand href="#" className='fs-5'>
                             <img src={logoImage} alt="Tropicana Getaway" style={{ width: '150px', height: '150px' }} />
