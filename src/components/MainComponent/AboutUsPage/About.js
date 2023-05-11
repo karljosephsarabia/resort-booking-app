@@ -1,6 +1,6 @@
 import React from 'react';
+import AboutUsTitle from './AboutUsTitle';
 import Developer from './AboutDeveloper';
-import OurStory from './OurStory';
 
 
 
@@ -8,7 +8,7 @@ export default function About() {
   return (
     <>
     <div id='about-container'>
-     <OurStory />
+      <AboutUsTitle />
      <Developer/>
     </div> 
     </>

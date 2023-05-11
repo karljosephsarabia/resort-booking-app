@@ -1,5 +1,4 @@
 import React from 'react'
-import Victor from './images/about2.jpg'
 import './About.css'
 
 
