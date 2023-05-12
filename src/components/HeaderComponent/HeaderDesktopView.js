@@ -7,7 +7,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import './style.css';
 // import { useNavigate } from 'react-router-dom';
 import logoImage from './Tropicana_Getaway.png';
-import axios from 'axios';
+// import axios from 'axios';
 
 export default function HeaderDesktopView() {
     // const navigate = useNavigate();
