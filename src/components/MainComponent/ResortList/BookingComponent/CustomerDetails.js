@@ -6,7 +6,7 @@ import TextField from '@mui/material/TextField';
 const CustomerDetails = (props) => {
     return (
         <>
-            <Typography sx={{ mt: 2, mb: 1 }}>
+            <Typography sx={{ mt: 2, mb: 1 }} className='mt-5 mb-3'>
                 <Stack gap={4}>
                     <div className='d-flex flex-row gap-5 mx-5'>
                         <div className='w-100'>
@@ -45,7 +45,7 @@ const CustomerDetails = (props) => {
                             {props.reservationError.phone && <Typography className='mt-0 text-danger' variant='caption'>Phone Required</Typography>}
                         </div>
                         <div className='w-100'>
-                            <TextField type='email' id="email-address" name='email-address' label="Email Address" InputLabelProps={{ shrink: true }} size='small' fullWidth oonChange={(e) => props.onChange(e)} />
+                            <TextField type='email' id="email-address" name='email-address' label="Email Address" InputLabelProps={{ shrink: true }} size='small' fullWidth onChange={(e) => props.onChange(e)} />
                             {props.reservationError['email-address'] && <Typography className='mt-0 text-danger' variant='caption'>Email Address Required</Typography>}
                         </div>
                     </div>
