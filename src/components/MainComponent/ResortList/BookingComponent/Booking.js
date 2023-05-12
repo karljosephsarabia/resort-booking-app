@@ -39,21 +39,19 @@ export default function Booking() {
         'check-out': '',
         'total-night': '',
         'total-room': '',
-        'guest-adult': '',
-        'guest-child': '',
+        'guest-adult': 0,
+        'guest-child': 0,
         'room-type': [],
         name: [],
         address: [],
         phone: '',
-        'email-address': ''
+        'email-address': '',
+        'total-amount': 0
     });
+    console.log(reservation);
 
     const [reservationError, setReservationError] = useState({});
-    console.log(reservation);
-    console.log(reservationError);
-
     const { sectionIdToScrollTo } = useSelector(state => state.booking);
-    console.log(sectionIdToScrollTo);
 
     useEffect(() => {
         if (sectionIdToScrollTo) {
@@ -66,8 +64,10 @@ export default function Booking() {
 
     const steps = ['Choose Date', 'Select a Room', 'Customer Details', 'Payment Method'];
 
+    let hasError = false;
+
     const handleNext = () => {
-        let hasError = false;
+
         if (activeStep === 0) {
             if (!reservation['check-in']) {
                 setReservationError(prevState => ({ ...prevState, 'check-in': true }));
@@ -110,6 +110,13 @@ export default function Booking() {
             }
 
             if (!hasError) {
+                const checkOutDate = new Date(Date.parse(reservation['check-out']));
+                const checkInDate = new Date(Date.parse(reservation['check-in']));
+
+                const diffInTime = checkOutDate.getTime() - checkInDate.getTime();
+                const diffInDays = diffInTime / (1000 * 3600 * 24);
+                setReservation(prevState => ({ ...prevState, 'total-night': diffInDays }));
+
                 setActiveStep((prevActiveStep) => prevActiveStep + 1);
             }
         } else if (activeStep === 1) {
@@ -124,6 +131,12 @@ export default function Booking() {
             }
 
             if (!hasError) {
+                let totalPrice = [];
+                totalPrice = reservation['room-type'].map(room => {
+                    return (parseInt(room.price.replace(/,/g, '')) * reservation['total-night'] * reservation['total-room']);
+                });
+                const totalAmount = totalPrice.reduce((sum, price) => sum + price, 0);
+                setReservation(prevState => ({ ...prevState, "total-amount": totalAmount }));
                 setActiveStep((prevActiveStep) => prevActiveStep + 1);
             }
         } else if (activeStep === 2) {
@@ -215,20 +228,15 @@ export default function Booking() {
     const handleOnInput = (e, input) => {
         console.log(e);
         if (input === 'check-in') {
-            setReservation(prevState => ({
-                ...prevState,
-                'check-in': e.$d.toDateString()
-            }));
+            setReservation(prevState => ({ ...prevState, 'check-in': e.$d.toDateString() }));
+            setReservationError(prevState => ({ ...prevState, 'check-in': false }));
+
         } else if (input === 'check-out') {
-            setReservation(prevState => ({
-                ...prevState,
-                'check-out': e.$d.toDateString()
-            }));
+            setReservation(prevState => ({ ...prevState, 'check-out': e.$d.toDateString() }));
+            setReservationError(prevState => ({ ...prevState, 'check-out': false }));
         } else {
-            setReservation(prevState => ({
-                ...prevState,
-                [e.target.name]: e.target.value
-            }));
+            setReservation(prevState => ({ ...prevState, [e.target.name]: e.target.value }));
+            setReservationError(prevState => ({ ...prevState, [e.target.name]: false }));
         }
     };
 
@@ -245,6 +253,7 @@ export default function Booking() {
     };
 
     const handleOnCustomerInfo = (e) => {
+        console.log(e);
         if (e.target.name === 'first-name' || e.target.name === 'last-name') {
             setReservation(prevState => {
                 const newName = { ...prevState, name: { ...prevState.name, [e.target.name]: e.target.value } };
@@ -289,11 +298,11 @@ export default function Booking() {
                                     </React.Fragment>
                                 ) : (
                                     <React.Fragment>
-                                        {activeStep === 0 && <ChooseDate onChange={handleOnInput} reservationError={reservationError} reservation={reservation} />}
-                                        {activeStep === 1 && <SelectRoom key={activeStep} selectedResort={selectedResort} onChange={handleRoom} reservationError={reservationError} />}
-                                        {activeStep === 2 && <CustomerDetails key={activeStep} onChange={handleOnCustomerInfo} reservationError={reservationError} />}
+                                        {activeStep === 0 && <ChooseDate key={0} onChange={handleOnInput} reservationError={reservationError} reservation={reservation} />}
+                                        {activeStep === 1 && <SelectRoom key={1} selectedResort={selectedResort} onChange={handleRoom} reservationError={reservationError} />}
+                                        {activeStep === 2 && <CustomerDetails key={2} onChange={handleOnCustomerInfo} reservationError={reservationError} />}
                                         {activeStep === 3 &&
-                                            <Card className='my-4'>
+                                            <Card className='mt-5 mb-3'>
                                                 <Stack>
                                                     <Row className=''>
                                                         <RadioGroup
@@ -370,20 +379,32 @@ export default function Booking() {
                                     <Typography className='text-center py-4 text-uppercase px-4' variant='h5'>{selectedResort.title}</Typography>
                                     <div className='my-1 mx-4'>
                                         <Typography className='d-flex justify-content-between text-uppercase'>Check-In
-                                            {activeStep !== 0 && <Typography>{reservation['check-in']}</Typography>}
+                                            {activeStep > 0 && <Typography>{reservation['check-in']}</Typography>}
                                         </Typography>
                                         <Typography className='d-flex justify-content-between my-3 text-uppercase'>Check-Out
-                                            {activeStep !== 0 && <Typography>{reservation['check-out']}</Typography>}
+                                            {activeStep > 0 && <Typography>{reservation['check-out']}</Typography>}
                                         </Typography>
                                         <Typography className='d-flex justify-content-between text-uppercase'>Total Nights
-                                            {activeStep !== 0 && <Typography>{reservation['total-night']}</Typography>}
+                                            {activeStep > 0 && <Typography>{reservation['total-night']}</Typography>}
                                         </Typography>
                                         <Typography className='d-flex justify-content-between my-3 text-uppercase'>Total Rooms
-                                            {activeStep !== 0 && <Typography>{reservation['total-room']}</Typography>}
+                                            {activeStep > 0 && <Typography>{reservation['total-room']}</Typography>}
                                         </Typography>
                                         <Typography className='d-flex justify-content-between border-bottom pb-4 text-uppercase'>Guest
-                                            {activeStep !== 0 && <Typography>{reservation['guest-adult']} Adult {reservation['guest-child']} Child</Typography>}
+                                            {activeStep > 0 && <Typography>{reservation['guest-adult']} Adult {reservation['guest-child']} Child</Typography>}
                                         </Typography>
+                                    </div>
+                                    <div className='mx-4'>
+                                        <Typography className='text-uppercase my-3'>Room</Typography>
+                                        {activeStep > 1 && reservation['room-type'].map(room =>
+                                            <div className='my-4'>
+                                                <Typography className='d-flex justify-content-between' variant='h6'>{room.title} <span>{room.price}</span></Typography>
+                                                <Typography className='d-flex justify-content-end' variant='caption'>({reservation['total-night']} Night + {reservation['total-room']} Room)</Typography>
+                                                <Typography className='d-flex justify-content-between' variant='button'>Subtotal <span>{(parseInt(room.price.replace(/,/g, '')) * reservation['total-night'] * reservation['total-room']).toLocaleString()}</span></Typography>
+                                            </div>
+                                        )}
+                                        {activeStep > 1 && <Typography className='d-flex flex-column align-items-center text-uppercase border-top py-5' variant='h4'>total price <span>{reservation['total-amount'].toLocaleString()}</span></Typography>}
+
                                     </div>
                                 </CardContent>
                             </Card>
