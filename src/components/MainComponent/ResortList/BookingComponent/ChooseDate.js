@@ -4,33 +4,33 @@ import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
-
+import dayjs from 'dayjs';
 
 
 export default function ChooseDate(props) {
-    console.log(props);
+    const minDate = dayjs().startOf('day');
     return (
         <>
-            <Stack className='border my-5 w-75 mx-auto'>
+            <Stack className='border mt-5 mb-3 w-75 mx-auto'>
                 <div className='bg-danger d-flex justify-content-center'>Make Reservation</div>
-                <div className='d-flex flex-column align-items-center my-4'>
-                    <h5>You Stay Dates</h5>
+                <div className='d-flex flex-column my-4'>
+                    <h5 className='mx-5 text-uppercase'>You Stay Dates</h5>
                     <div className='d-flex flex-row gap-3 mx-5'>
                         <div>
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                 <DemoContainer components={['DatePicker']}>
-                                    <DatePicker label="Check-in" slotProps={{ textField: { size: 'small' } }} onChange={(e) => props.onChange(e, 'check-in')} fullWidth />
+                                    <DatePicker label="Check-in" slotProps={{ textField: { size: 'small' } }} onChange={(e) => props.onChange(e, 'check-in')} minDate={minDate} fullWidth />
                                 </DemoContainer>
                             </LocalizationProvider>
-                            { props.reservationError['check-in'] && <Typography className='mt-0 text-danger' variant='caption'>Check-In date required</Typography>}
+                            {props.reservationError['check-in'] && <Typography className='mt-0 text-danger' variant='caption'>Check-In date required</Typography>}
                         </div>
                         <div>
                             <LocalizationProvider dateAdapter={AdapterDayjs}>
                                 <DemoContainer components={['DatePicker']}>
-                                    <DatePicker label="Check-out" slotProps={{ textField: { size: 'small' } }} onChange={(e) => props.onChange(e, 'check-out')} />
+                                    <DatePicker label="Check-out" slotProps={{ textField: { size: 'small' } }} onChange={(e) => props.onChange(e, 'check-out')} minDate={minDate} />
                                 </DemoContainer>
                             </LocalizationProvider>
-                            { props.reservationError['check-out'] && <Typography className='mt-0 text-danger' variant='caption'>Check-Out date required</Typography>}
+                            {props.reservationError['check-out'] && <Typography className='mt-0 text-danger' variant='caption'>Check-Out date required</Typography>}
                         </div>
                     </div>
                 </div>
