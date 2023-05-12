@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import Ryan from './images/cutedog.png';
 import Karl from './images/Smart Owl.png';
 import Ierie from './images/sleepy cat.png';

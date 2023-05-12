@@ -2,6 +2,7 @@ import React from 'react';
 import AboutUsTitle from './AboutUsTitle';
 import OurStoryContent from './OurStoryContent';
 import Developer from './AboutDeveloper';
+import TheTeamHeading from './TheTeamHeading';
 
 
 
@@ -11,7 +12,8 @@ export default function About() {
     <div id='about-container'>
       <AboutUsTitle />
       <OurStoryContent />
-     <Developer/>
+      <TheTeamHeading />
+      <Developer/>
     </div> 
     </>
   )
