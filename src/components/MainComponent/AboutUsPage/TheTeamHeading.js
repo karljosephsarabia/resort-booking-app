@@ -5,7 +5,7 @@ function TheTeamHeading () {
     return (
         <>
             <h2 className='team-heading fw-bold d-flex justify-content-center mt-5 p-1'>
-                The "Exhasuted" Beach-Loving Developers
+                The "Exhausted" Beach-Loving Developers
             </h2>
         </>
     )
