@@ -5,13 +5,20 @@ import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import LoginIcon from '@mui/icons-material/Login';
 import './style.css';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import logoImage from './Tropicana_Getaway.png';
+import axios from 'axios';
 
 export default function HeaderDesktopView() {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    const handleLogIn = () => navigate('/login');
+
+    // const handleLogIn = () => navigate('/login');
+    const handleLogIn = () => {
+        window.location.href = 'http://127.0.0.1:8000/api/user';
+    };
+
+
     return (
         <>
             {['sm'].map((expand) => (
