@@ -34,10 +34,10 @@ export default function ChooseDate(props) {
                         </div>
                     </div>
                 </div>
-                <div className='d-flex flex-column align-items-center'>
-                    <h5>ROOM & Guest</h5>
+                <div className='d-flex flex-column'>
+                    <h5 className='mx-5'>ROOM</h5>
                     <div className='d-flex flex-row'>
-                        <FormControl size='small' sx={{ width: "29vw" }}>
+                        <FormControl size='small' sx={{ width: "29vw" }} className='mx-5'>
                             <InputLabel id="demo-simple-select-label">Number of Room</InputLabel>
                             <Select
                                 labelId="demo-simple-select-label"
@@ -54,7 +54,7 @@ export default function ChooseDate(props) {
                                 <MenuItem value={4}>4 Room</MenuItem>
                                 <MenuItem value={5}>5 Room</MenuItem>
                             </Select>
-                            { props.reservationError['total-room'] && <Typography className='mt-0 text-danger' variant='caption'>Number of rooms required</Typography>}
+                            {props.reservationError['total-room'] && <Typography className='mt-0 text-danger' variant='caption'>Number of rooms required</Typography>}
                         </FormControl>
                     </div>
                     <div className='d-flex flex-row gap-3 mx-5 mt-4 mb-5'>
