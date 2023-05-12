@@ -3,14 +3,16 @@ import { Stack } from '@mui/material';
 import Typography from '@mui/material/Typography';
 import Checkbox from '@mui/material/Checkbox';
 import FormControlLabel from '@mui/material/FormControlLabel';
+import Chip from '@mui/material/Chip';
 
 
 const SelectRoom = (props) => {
-    console.log(props)
+    console.log(props);
+
     return (
         <>
-            <Stack className='my-5'>
-                <div>Available Room</div>
+            <Stack className='mt-5 mb-3'>
+                <Typography variant='h6' className='mb-2'>Available Room</Typography>
                 <div>
                     {props.selectedResort.room.map((room, index) => (
                         <FormControlLabel control={
@@ -22,16 +24,18 @@ const SelectRoom = (props) => {
                                     <div className="col-md-8 d-flex">
                                         <div className="card-body">
                                             <h5 className="card-title">{room.title}</h5>
-                                            <p className="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                            <p className="card-text d-flex justify-content-end"><small className="text-body-secondary">PRICE: {room.price}</small></p>
+                                            {room.features.map((feature, index) => (
+                                                <Chip label={feature} key={index} className='m-1'/>
+                                            ))}
+                                            < p className="card-text d-flex justify-content-end"><small className="text-body-secondary">PRICE: {room.price}</small></p>
                                         </div>
                                         <Checkbox name={room.title} value={room.price} />
                                     </div>
                                 </div>
                             </div>} />))}
-                    { props.reservationError['room-type'] && <Typography className='mt-0 text-danger' variant='caption'>Choose your room</Typography>}
+                    {props.reservationError['room-type'] && <Typography className='mt-0 text-danger text-uppercase' variant='caption'>You did not select your room</Typography>}
                 </div>
-            </Stack>
+            </Stack >
         </>
     );
 };
