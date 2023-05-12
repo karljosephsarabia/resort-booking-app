@@ -39,17 +39,15 @@ export default function ResortModal({ onHide, resort, show }) {
                                                     className="d-block w-100"
                                                     src={image}
                                                     alt="First slide"
-                                                    style={{ height: "431px" }}
+                                                    style={{ height: "21rem", objectFit: "cover" }}
                                                 />
                                             </Carousel.Item>
                                         ))
                                         }
                                     </Carousel>
+                                    <Typography sx={{color: "white", backgroundColor: "black"}}>{ resort.description } </Typography>
                                 </Col>
                             </Row>
-                        </Tab>
-                        <Tab eventKey="description" title="Description">
-                            {resort.description}
                         </Tab>
                         <Tab eventKey="accomodation" title="Accommodation">
                             <Carousel fade>
