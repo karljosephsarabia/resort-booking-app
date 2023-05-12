@@ -1,6 +1,6 @@
 @font-face {
-    font-family: "orange-lemonade";
-    src: url("../../../../Font/Montserrat-ExtraBold.ttf");
+    font-family: "crushed";
+    src: url("../../../../Font/Crushed-Regular.ttf");
 }
 
 @font-face {
@@ -23,8 +23,9 @@
 }
 
 .main-content-text-desktop {
-    font-family: orange-lemonade;
-    font-size: 3.5rem;
+    font-family: crushed;
+    font-size: 5rem;
+    font-weight: bold;
 }
 
 .main-content-quote-desktop {
