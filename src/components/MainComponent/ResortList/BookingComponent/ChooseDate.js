@@ -57,17 +57,20 @@ export default function ChooseDate(props) {
                             {props.reservationError['total-room'] && <Typography className='mt-0 text-danger' variant='caption'>Number of rooms required</Typography>}
                         </FormControl>
                     </div>
-                    <div className='d-flex flex-row gap-3 mx-5 mt-4 mb-5'>
-                        <div className='d-flex flex-column'>
-                            <h5>Adult</h5>
-                            <TextField name='guest-adult' label="adult" variant="outlined" size='small' type='number' onChange={(e) => props.onChange(e)} />
-                            { props.reservationError['guest-adult'] && <Typography className='mt-0 text-danger' variant='caption'>Adult count required</Typography>}
-                        </div>
-                        <div className='d-flex flex-column'>
-                            <h5>Child</h5>
-                            <TextField name='guest-child' label="child" variant="outlined" size='small' type='number' onChange={(e) => props.onChange(e)} />
-                            { props.reservationError['guest-child'] && <Typography className='mt-0 text-danger' variant='caption'>Child count required</Typography>}
-                        </div>
+                    <div className='d-flex flex-column mx-5 mt-4 mb-5'>
+                        <h5>GUEST</h5>
+                        <Stack direction="horizontal" className='gap-3'>
+                            <div className='d-flex flex-column'>
+                                <TextField name='guest-adult' label="adult" variant="outlined" value={props.reservation['guest-adult']} inputProps={{ min: 0 }} size='small' type='number' onChange={(e) => props.onChange(e)} />
+                                {props.reservationError['guest-adult'] && <Typography className='mt-0 text-danger' variant='caption'>Adult count required</Typography>}
+                            </div>
+                            <div className='d-flex flex-column'>
+                                <TextField name='guest-child' label="child" variant="outlined" value={props.reservation['guest-child']} inputProps={{ min: 0 }} size='small' type='number' onChange={(e) => props.onChange(e)} />
+                                {props.reservationError['guest-child'] && <Typography className='mt-0 text-danger' variant='caption'>Child count required</Typography>}
+                            </div>
+                        </Stack>
+
+
                     </div>
                 </div>
             </Stack>
