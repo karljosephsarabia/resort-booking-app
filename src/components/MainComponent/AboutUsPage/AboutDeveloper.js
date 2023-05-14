@@ -10,9 +10,9 @@ import './About.css'
 function Developer() {
 
     return (
-      <>
-      <div className='row d-flex my-5'>
-        <div className='col mx-4'>
+      <div className='d-flex justify-content-center '>
+      <div className='row d-flex justify-content-center my-5 container'>
+        <div className='col'>
           <div className="card aboutuscard">
             <div className="card-body">
               <img className='card-img-top' src={Karl} alt='Karl the Sleepy Cat'/>
@@ -26,7 +26,7 @@ function Developer() {
           </div>
         </div>
 
-        <div className='col mx-4'>
+        <div className='col'>
           <div className="card aboutuscard">
               <div className="card-body">
                 <img className='card-img-top' src={Ryan} alt='Ryan The Puppy'/>
@@ -40,7 +40,7 @@ function Developer() {
             </div>
         </div>
 
-        <div className='col mx-4'>
+        <div className='col'>
           <div className="card aboutuscard">
               <div className="card-body">
                 <img className='card-img-top' src={Ierie} alt='Ierie The Night Owl'/>
@@ -54,7 +54,7 @@ function Developer() {
             </div>
         </div>
 
-        <div className='col mx-4'>
+        <div className='col'>
           <div className="card aboutuscard">
               <div className="card-body">
                 <img className='card-img-top' src={Gesila} alt='Gesila The Huggable Penguin'/>
@@ -70,7 +70,7 @@ function Developer() {
 
 
       </div>
-      </>
+      </div>
     )
 };
 export default Developer;

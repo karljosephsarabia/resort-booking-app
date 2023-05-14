@@ -1,4 +1,5 @@
 .team-heading{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     background-color: rgba(245, 245, 245, 0.651);
+    box-sizing: border-box;
 }
