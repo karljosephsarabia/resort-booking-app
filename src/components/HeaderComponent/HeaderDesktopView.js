@@ -5,9 +5,21 @@ import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import LoginIcon from '@mui/icons-material/Login';
 import './style.css';
-// import { useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import logoImage from './Tropicana_Getaway.png';
 import axios from 'axios';
+import { setUserInfo, setUserToken } from '../../store/ResponsiveSlice';
+import Avatar from '@mui/material/Avatar';
+import { useEffect, useState } from 'react';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemButton from '@mui/material/ListItemButton';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import InboxIcon from '@mui/icons-material/Inbox';
+import DraftsIcon from '@mui/icons-material/Drafts';
+
 
 export default function HeaderDesktopView() {
     const handleShow = () => setShow(true);
