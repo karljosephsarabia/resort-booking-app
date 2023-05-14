@@ -4,6 +4,7 @@ import OurStoryContent from './OurStoryContent';
 import Developer from './AboutDeveloper';
 import TheTeamHeading from './TheTeamHeading';
 import MainFooter from '../MainFooter/MainFooter';
+import './About.css';
 
 
 
