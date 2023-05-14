@@ -24,6 +24,10 @@ import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import CardContent from '@mui/material/CardContent';
 
+import { Accordion, AccordionSummary, AccordionDetails } from '@material-ui/core';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+
+
 import ChooseDate from './ChooseDate';
 import SelectRoom from './SelectRoom';
 import CustomerDetails from './CustomerDetails';
@@ -395,16 +399,36 @@ export default function Booking() {
                                         </Typography>
                                     </div>
                                     <div className='mx-4'>
-                                        <Typography className='text-uppercase my-3'>Room</Typography>
-                                        {activeStep > 1 && reservation['room-type'].map(room =>
+                                        {activeStep > 1 && (
                                             <div className='my-4'>
-                                                <Typography className='d-flex justify-content-between' variant='h6'>{room.title} <span>{room.price}</span></Typography>
-                                                <Typography className='d-flex justify-content-end' variant='caption'>({reservation['total-night']} Night + {reservation['total-room']} Room)</Typography>
-                                                <Typography className='d-flex justify-content-between' variant='button'>Subtotal <span>{(parseInt(room.price.replace(/,/g, '')) * reservation['total-night'] * reservation['total-room']).toLocaleString()}</span></Typography>
+                                                <Typography className='text-uppercase' variant='h6' style={{ textAlign: 'center' }}>Total Price</Typography>
+                                                <Typography className='d-flex flex-column align-items-center' variant='h4'>
+                                                    <span>{reservation['total-amount'].toLocaleString()}</span>
+                                                </Typography>
                                             </div>
                                         )}
-                                        {activeStep > 1 && <Typography className='d-flex flex-column align-items-center text-uppercase border-top py-5' variant='h4'>total price <span>{reservation['total-amount'].toLocaleString()}</span></Typography>}
-
+                                        {activeStep > 1 &&
+                                            <Accordion>
+                                                <AccordionSummary expandIcon={<ExpandMoreIcon />} aria-controls="room-types-content" id="room-types-header">
+                                                    <Typography variant='h5'>Room Types</Typography>
+                                                </AccordionSummary>
+                                                <AccordionDetails>
+                                                    {reservation['room-type'].map(room =>
+                                                        <div key={room.id} className='my-4'>
+                                                            <div>
+                                                                <Typography variant='h6'>{room.title} <span>{room.price}</span></Typography>
+                                                            </div>
+                                                            <div>
+                                                                <Typography className='d-flex justify-content-end' variant='caption'>({reservation['total-night']} Night + {reservation['total-room']} Room)</Typography>
+                                                            </div>
+                                                            <div>
+                                                                <Typography className='d-flex justify-content-between' variant='button'>Subtotal <span>{(parseInt(room.price.replace(/,/g, '')) * reservation['total-night'] * reservation['total-room']).toLocaleString()}</span></Typography>
+                                                            </div>
+                                                        </div>
+                                                    )}
+                                                </AccordionDetails>
+                                            </Accordion>
+                                        }
                                     </div>
                                 </CardContent>
                             </Card>
