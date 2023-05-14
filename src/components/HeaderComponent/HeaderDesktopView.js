@@ -22,17 +22,44 @@ import DraftsIcon from '@mui/icons-material/Drafts';
 
 
 export default function HeaderDesktopView() {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const userToken = useSelector(state => state.userToken);
+    const userInfo = useSelector(state => state.userInfo);
+    console.log(userInfo);
+
+
+
+    const [show, setShow] = useState(false);
+
+    useEffect(() => {
+        if (userToken) {
+            console.log('user is logged in');
+            axios.get('http://127.0.0.1:8000/api/user', {
+                headers: {
+                    Authorization: `Bearer ${userToken}`
+                }
+            }).then(response => {
+                const { data } = response;
+                dispatch(setUserInfo(data));
+            }).catch(err => {
+                console.error(err);
+            });
+        } else {
+            console.log('user is Not logged in');
+        }
+    }, [dispatch, userToken]);
+
+
     const handleShow = () => setShow(true);
     const handleClose = () => setShow(false);
+    const handleLogIn = () => navigate('/login');
 
     const handleLogOut = () => {
         setShow(false);
         dispatch(setUserInfo([]));
         dispatch(setUserToken(''));
 
-    // const handleLogIn = () => navigate('/login');
-    const handleLogIn = () => {
-        window.location.href = 'http://127.0.0.1:8000/api/user';
     };
 
 
@@ -62,7 +89,8 @@ export default function HeaderDesktopView() {
                                     <Nav.Link href="/AboutUsPage" className='text-uppercase fs-5'>About</Nav.Link>
                                     <Nav.Link href="/ContactPage" className='text-uppercase fs-5'>Contact</Nav.Link>
                                 </Nav>
-                                <Button variant='primary' size='lg' style={{ width: "8rem" }} className='align-items-center d-flex gap-2' onClick={handleLogIn}><LoginIcon></LoginIcon>LOGIN</Button>
+                                {!userToken && <Button variant='primary' size='lg' style={{ width: "8rem" }} className='align-items-center d-flex gap-2' onClick={handleLogIn}><LoginIcon></LoginIcon>LOGIN</Button>}
+                                {userToken && <Button variant='light' size='medium' className='d-flex flex-row align-items-center gap-2 rounded-pill' onClick={handleShow}><Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />Welcome, {userInfo.name}</Button>}
                             </Offcanvas.Body>
                         </Navbar.Offcanvas>
                     </Container>
