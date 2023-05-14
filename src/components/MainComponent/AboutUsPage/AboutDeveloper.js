@@ -11,7 +11,7 @@ function Developer() {
 
     return (
       <>
-      <div className='row d-flex'>
+      <div className='row d-flex my-5'>
         <div className='col mx-4'>
           <div className="card aboutuscard">
             <div className="card-body">
