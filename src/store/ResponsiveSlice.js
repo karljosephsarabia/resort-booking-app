@@ -58,11 +58,35 @@ export const bookingSlice = createSlice({
     }
 });
 
+export const userTokenSlice = createSlice({
+    name: 'userToken',
+    initialState: '',
+    reducers: {
+        setUserToken: (state, action) => {
+            console.log(action.payload);
+            return action.payload;
+        }
+    }
+});
+
+export const userInfoSlice = createSlice({
+    name: 'userInfo',
+    initialState: [],
+    reducers: {
+        setUserInfo: (state, action) => {
+            console.log(action.payload);
+            return action.payload;
+        }
+    }
+});
+
 
 export const { scrollToSection } = bookingSlice.actions;
 export const { setResponsive } = responsiveSlice.actions;
 export const { setResortList } = resortListSlice.actions;
 export const { setSearch } = searchSlice.actions;
 export const { setBook } = bookSlice.actions;
+export const { setUserToken } = userTokenSlice.actions;
+export const { setUserInfo } = userInfoSlice.actions;
 
 export default responsiveSlice;
