@@ -11,25 +11,24 @@ function Contact() {
         <Row className='mb-5 mt-3'>
           <Col lg='8'>
           <h1 className='display-4 mb-4' id='contact-h1'>
-            Contact Us
+            Get In Touch
           </h1>
           </Col>
         </Row>
 
         <Row className='sec_sp'>
           <Col lg='5' className='mb-5'>
-            <h3 className='Color_sec py-4'>Get in touch</h3>
+            <h3 className='Color_sec py-4'>For your questions, feedback, and concerns, feel free to send as an email.</h3>
             <address>
-              <strong>Email : DORA-D'EXPLORER@gmail.com</strong>
+              <strong>Email : info@tropicanagetaway.com</strong>
               <br/>
               <br/>
               <p>
-                <strong>Phone : +63 902X xXxXXX </strong>
+                <strong>Phone : +63 912 345 678 </strong>
               </p>
             </address>
             <p>
-              "Thank you for using our  booking app, and we look
-              forward to assisting you!" 
+              "Thank you for using our services. We look forward to continue bringing you the magic of the beach." 
             </p>
           </Col>
 
@@ -65,7 +64,7 @@ function Contact() {
               <br/>
               <Row>
                 <Col lg='12' className='form-group'>
-                  <button className='btn btn-primary' type='submit' id='btn-contact'>submit</button>
+                  <button className='btn btn-primary' type='submit' id='btn-contact'>SUBMIT</button>
                 </Col>
               </Row>
             </form>

@@ -2,7 +2,7 @@ import Header from "./components/Header";
 import Main from "./components/Main";
 import background from './fotos/background.jpg';
 import { BrowserRouter } from 'react-router-dom';
-import Footer from "./components/MainComponent/MainFooter/MainFooter.js";
+import MainFooter from "./components/MainComponent/MainFooter/MainFooter.js";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
       }} className="d-flex flex-column justify-content-evenly">
         <Header />
         <Main />
-        <Footer />
+        <MainFooter />
       </div>
     </BrowserRouter>
   );
