@@ -10,8 +10,13 @@ import logoImage from './Tropicana_Getaway.png';
 import axios from 'axios';
 
 export default function HeaderDesktopView() {
-    // const navigate = useNavigate();
+    const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
 
+    const handleLogOut = () => {
+        setShow(false);
+        dispatch(setUserInfo([]));
+        dispatch(setUserToken(''));
 
     // const handleLogIn = () => navigate('/login');
     const handleLogIn = () => {
@@ -51,6 +56,72 @@ export default function HeaderDesktopView() {
                     </Container>
                 </Navbar>
             ))}
+
+            <Offcanvas show={show} onHide={handleClose} placement='end'>
+                <Offcanvas.Header closeButton></Offcanvas.Header>
+                <Offcanvas.Body>
+
+                    <List>
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    <InboxIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Profile" />
+                            </ListItemButton>
+                        </ListItem>
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    <DraftsIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Wishlist" />
+                            </ListItemButton>
+                        </ListItem>
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    <DraftsIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Book Status" />
+                            </ListItemButton>
+                        </ListItem>
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    <DraftsIcon />
+                                </ListItemIcon>
+                                <ListItemText primary="Book History" />
+                            </ListItemButton>
+                        </ListItem>
+                    </List>
+                    {userInfo.user_type === 'resort-owner' && <List>
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemText primary="Dashboard" />
+                            </ListItemButton>
+                        </ListItem>
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemText primary="Resort List" />
+                            </ListItemButton>
+                        </ListItem>
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemText primary="Booking List" />
+                            </ListItemButton>
+                        </ListItem>
+                    </List>}
+
+                    <List>
+                        <ListItem disablePadding>
+                            <ListItemButton>
+                                <ListItemText primary="Logout" className='text-uppercase' onClick={handleLogOut} />
+                            </ListItemButton>
+                        </ListItem>
+                    </List>
+                </Offcanvas.Body>
+            </Offcanvas>
         </>
     );
 }
